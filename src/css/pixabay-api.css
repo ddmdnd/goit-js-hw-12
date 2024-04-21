@@ -1,0 +1,96 @@
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+ul,
+ol {
+  margin: 0;
+  padding-left: 0;
+}
+img {
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--ocean);
+}
+button {
+  cursor: pointer;
+}
+.gallery{
+display: flex;
+max-width: 1440px;
+padding: 24px;
+flex-wrap: wrap;
+gap: 24px 24px;
+justify-content: center;
+margin: 0;
+}
+
+.photoItem {
+    box-sizing: border-box;
+    width: 360px;
+    height:200px;
+    border: 1px solid #808080;
+}
+.img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin: 0px;
+  padding: 0px;
+}
+.titlePhoto{
+    width: 100%;
+    height: 48px;
+    max-height: 100%;
+    display: flex;
+background: #FFF;
+margin: 0px;
+justify-content: space-around;
+
+    
+}
+.proportyTitle{
+color: #2E2F42;
+font-family: Montserrat;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+font-weight: bold;
+line-height: 1.33; /* 133.333% */
+letter-spacing: 0.04em;
+padding: auto;
+
+
+}
+.propertyQuantety {
+color: #2E2F42;
+font-family: Montserrat;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; 
+letter-spacing: 0.48px;
+padding: auto;
+}
+.propertyItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
