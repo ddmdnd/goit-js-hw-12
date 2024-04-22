@@ -10,8 +10,6 @@ const form = document.querySelector('.searchBox');
 const inputSearch = form.querySelector('.searchInput');
 const gallery = document.querySelector('.gallery')
 const loadSecondBtm = document.querySelector('.button-search-second');
-
-
 function showLoader(){
 const loadingText = `<span class="loader"></span>`;
 gallery.innerHTML = loadingText;
