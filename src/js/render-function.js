@@ -27,9 +27,11 @@ export function photoResponse(data){
             </div>
             </div>
             </a>
+            </li>
             `
 };
 export function photosResponse(arr){
+    console.log(arr)
     return arr.map(photoResponse).join("");
 };
 
