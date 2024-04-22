@@ -31,7 +31,6 @@ export function photoResponse(data){
             `
 };
 export function photosResponse(arr){
-    console.log(arr)
     return arr.map(photoResponse).join("");
 };
 

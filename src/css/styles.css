@@ -50,6 +50,10 @@ letter-spacing: 0.64px;
 outline: none;
 
 }
+.hidden {
+  display: none;
+  opacity: 0;
+}
 .loaderBtm {
   position: fixed;
   top: 50%;
