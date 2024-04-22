@@ -40,7 +40,8 @@ form.addEventListener("submit", async (e) => {
         maxPage = Math.ceil(photo.totalHits / perPage);
         const markup = photosResponse(photo.hits);
         slowScroll()
-        if (maxPage > 0) {
+        console.log(maxPage)
+        if (maxPage > 1) {
             showBtm()
         }
         if (!photo.total) {
