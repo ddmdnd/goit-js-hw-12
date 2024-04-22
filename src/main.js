@@ -73,7 +73,6 @@ form.addEventListener("submit", async (e) => {
 function sendNextRequest(){
     loadSecondBtm.addEventListener("click", async () => {
         currentPage += 1;
-        console.log(maxPage)
         checkBtnStatus()
         try {
             const photo = await getPhotoServer(inputData,currentPage,perPage);
