@@ -11,6 +11,7 @@ const inputSearch = form.querySelector('.searchInput');
 const gallery = document.querySelector('.gallery')
 const loadSecondBtm = document.querySelector('.button-search-second');
 
+
 function showLoader(){
 const loadingText = `<span class="loader"></span>`;
 gallery.innerHTML = loadingText;
@@ -38,6 +39,7 @@ form.addEventListener("submit", async (e) => {
         const photo = await getPhotoServer(inputData,currentPage, perPage);
         maxPage = Math.ceil(photo.totalHits / perPage);
         const markup = photosResponse(photo.hits);
+        slowScroll()
         if (maxPage > 0) {
             showBtm()
         }
@@ -76,7 +78,7 @@ function sendNextRequest(){
         try {
             const photo = await getPhotoServer(inputData,currentPage,perPage);
             const markup = photosResponse(photo.hits);
-            loadSecondBtm.style.display = 'flex';
+            slowScroll()
             if (!photo.total) {
                 iziToast.show({
                     id: 'messageError',
@@ -121,6 +123,13 @@ function hideBtm(){
 }
 function showBtm(){
     loadSecondBtm.classList.remove("hidden")
+}
+function slowScroll() {
+    const height = gallery.firstElementChild.getBoundingClientRect().height; 
+    window.scrollBy({
+        top: height * 2, 
+        behavior: 'smooth', 
+    });
 }
 
 

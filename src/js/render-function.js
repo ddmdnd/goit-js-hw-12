@@ -7,7 +7,6 @@ export function photoResponse(data){
                 class="img"
                 src="${data.previewURL}"
                 alt="${data.tags}"/>
-                
             <div class= "titlePhoto">
             <div class="propertyItem">
                 <h5 class="proportyTitle">Likes</h5>
