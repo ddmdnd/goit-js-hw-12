@@ -32,6 +32,7 @@ form.addEventListener("submit", async (e) => {
             color: '#EF4040',
         })
         form.reset();
+        sendNextRequest()
         return
     }
     try {
@@ -53,6 +54,7 @@ form.addEventListener("submit", async (e) => {
             });
             hideBtm()
             form.reset();
+            sendNextRequest()
         return
         }
         slowScroll()
@@ -67,6 +69,9 @@ form.addEventListener("submit", async (e) => {
             title: 'Error',
             message: `${error}`,
         });
+        hideBtm()
+        form.reset();
+        sendNextRequest()
     }
     form.reset();
     if(currentPage < maxPage){
@@ -94,6 +99,7 @@ function setupLoadMoreButton(){
                     messageColor: 'white',
                     color: '#EF4040',
                 });
+                form.reset();
                 return
             }
             slowScroll()
@@ -138,5 +144,8 @@ function slowScroll() {
         behavior: 'smooth', 
     });
 }
-
+function sendNextRequest(){
+    gallery.innerHTML = '';
+    currentPage = 1;
+}
 
