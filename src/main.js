@@ -14,12 +14,13 @@ function showLoader(){
 const loadingText = `<span class="loader"></span>`;
 gallery.innerHTML = loadingText;
 }
-let inputData; 
-let currentPage= 1;
+let inputData;
+let currentPage;
 let maxPage;
 const perPage = 15;
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    currentPage= 1;
     inputData = inputSearch.value.trim();
     if(!inputData){
         iziToast.show({
