@@ -51,6 +51,8 @@ form.addEventListener("submit", async (e) => {
                 messageColor: 'white',
                 color: '#EF4040',
             });
+            hideBtm()
+            form.reset();
         }
         gallery.innerHTML = markup;
         const lightbox = new SimpleLightbox('.gallery a', {
@@ -58,7 +60,6 @@ form.addEventListener("submit", async (e) => {
             captionDelay: 250
         });
     } catch (error) {
-        console.error(error);
         iziToast.error({
             position: 'topRight',
             title: 'Error',
@@ -66,7 +67,10 @@ form.addEventListener("submit", async (e) => {
         });
     }
     form.reset();
-    sendNextRequest()
+    if(currentPage >= maxPage){
+        sendNextRequest()
+    }
+   
 });
 
 function sendNextRequest(){
@@ -93,7 +97,6 @@ function sendNextRequest(){
                 captionDelay: 250
             });
         } catch (error) {
-            console.error(error);
             iziToast.error({
                 position: 'topRight',
                 title: 'Error',
@@ -103,7 +106,6 @@ function sendNextRequest(){
     });
 }
 function checkBtnStatus() {
-    if(currentPage >= maxPage){
         hideBtm()
         iziToast.show({
             id: 'messageError',
@@ -114,7 +116,6 @@ function checkBtnStatus() {
             color: '#EF4040',
         });
         return
-    }
 }
 function hideBtm(){
     loadSecondBtm.classList.add("hidden")
