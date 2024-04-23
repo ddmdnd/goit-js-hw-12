@@ -33,9 +33,9 @@ form.addEventListener("submit", async (e) => {
         })
         return
     }
-    if(inputData){showLoader()};
     try {
         const photo = await getPhotoServer(inputData,currentPage, perPage);
+        if(photo.total){showLoader()};
         maxPage = Math.ceil(photo.totalHits / perPage);
         const markup = photosResponse(photo.hits);
         slowScroll()
@@ -68,12 +68,12 @@ form.addEventListener("submit", async (e) => {
     }
     form.reset();
     if(currentPage < maxPage){
-        sendNextRequest()
+        setupLoadMoreButton()
     }
    
 });
 
-function sendNextRequest(){
+function setupLoadMoreButton(){
     loadSecondBtm.addEventListener("click", async () => {
         currentPage += 1;
         if (maxPage === currentPage) {
@@ -107,6 +107,7 @@ function sendNextRequest(){
             });
         }
     });
+loadSecondBtm.addEventListener("click", sendNextRequest);
 }
 function checkBtnStatus() {
         hideBtm()
@@ -121,12 +122,10 @@ function checkBtnStatus() {
         return
 }
 function hideBtm(){
-    // loadSecondBtm.classList.add("hidden")
     loadSecondBtm.style.display ="none";
 
 }
 function showBtm(){
-    // loadSecondBtm.classList.remove("hidden")
     loadSecondBtm.style.display ="flex";
 }
 function slowScroll() {
