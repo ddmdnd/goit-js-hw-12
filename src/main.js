@@ -31,6 +31,7 @@ form.addEventListener("submit", async (e) => {
             messageColor: 'white',
             color: '#EF4040',
         })
+        form.reset();
         return
     }
     try {
