@@ -20,7 +20,7 @@ let maxPage;
 const perPage = 15;
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    currentPage= 1;
+    currentPage = 1;
     inputData = inputSearch.value.trim();
     if(!inputData){
         iziToast.show({
@@ -39,7 +39,6 @@ form.addEventListener("submit", async (e) => {
         maxPage = Math.ceil(photo.totalHits / perPage);
         const markup = photosResponse(photo.hits);
         slowScroll()
-        console.log(maxPage)
         if (maxPage > 1) {
             showBtm()
         }
@@ -68,7 +67,7 @@ form.addEventListener("submit", async (e) => {
         });
     }
     form.reset();
-    if(currentPage >= maxPage){
+    if(currentPage < maxPage){
         sendNextRequest()
     }
    
@@ -77,7 +76,10 @@ form.addEventListener("submit", async (e) => {
 function sendNextRequest(){
     loadSecondBtm.addEventListener("click", async () => {
         currentPage += 1;
-        checkBtnStatus()
+        if (maxPage === currentPage) {
+            checkBtnStatus()
+        }
+        
         try {
             const photo = await getPhotoServer(inputData,currentPage,perPage);
             const markup = photosResponse(photo.hits);
@@ -119,10 +121,13 @@ function checkBtnStatus() {
         return
 }
 function hideBtm(){
-    loadSecondBtm.classList.add("hidden")
+    // loadSecondBtm.classList.add("hidden")
+    loadSecondBtm.style.display ="none";
+
 }
 function showBtm(){
-    loadSecondBtm.classList.remove("hidden")
+    // loadSecondBtm.classList.remove("hidden")
+    loadSecondBtm.style.display ="flex";
 }
 function slowScroll() {
     const height = gallery.firstElementChild.getBoundingClientRect().height; 
