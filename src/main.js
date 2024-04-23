@@ -116,7 +116,7 @@ function setupLoadMoreButton(){
             });
         }
     });
-loadSecondBtm.addEventListener("click", sendNextRequest);
+loadSecondBtm.addEventListener("click", setupLoadMoreButton);
 }
 function checkBtnStatus() {
         hideBtm()
@@ -149,4 +149,3 @@ function sendNextRequest(){
     currentPage = 1;
 }
 
-// 
