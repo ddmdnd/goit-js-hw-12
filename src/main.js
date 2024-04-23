@@ -38,7 +38,6 @@ form.addEventListener("submit", async (e) => {
         if(photo.total){showLoader()};
         maxPage = Math.ceil(photo.totalHits / perPage);
         const markup = photosResponse(photo.hits);
-        slowScroll()
         if (maxPage > 1) {
             showBtm()
         }
@@ -53,7 +52,9 @@ form.addEventListener("submit", async (e) => {
             });
             hideBtm()
             form.reset();
+        return
         }
+        slowScroll()
         gallery.innerHTML = markup;
         const lightbox = new SimpleLightbox('.gallery a', {
             captionsData: 'alt',
@@ -83,7 +84,6 @@ function setupLoadMoreButton(){
         try {
             const photo = await getPhotoServer(inputData,currentPage,perPage);
             const markup = photosResponse(photo.hits);
-            slowScroll()
             if (!photo.total) {
                 iziToast.show({
                     id: 'messageError',
@@ -93,7 +93,9 @@ function setupLoadMoreButton(){
                     messageColor: 'white',
                     color: '#EF4040',
                 });
+                return
             }
+            slowScroll()
             gallery.insertAdjacentHTML("beforeend", markup)
             const lightbox = new SimpleLightbox('.gallery a', {
                 captionsData: 'alt',
